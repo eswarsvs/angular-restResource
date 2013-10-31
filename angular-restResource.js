@@ -4,6 +4,7 @@ angular.module('restResource', []).provider('restResource', function() {
       this.url = url;
       this.prefix = config.prefix || '';
       this.suffix = config.suffix || '';
+      this.method = config.method || 'PUT';
     }
     
     restResource.prototype = {
@@ -21,7 +22,12 @@ angular.module('restResource', []).provider('restResource', function() {
       update: function(id, data, config) {
         if (!id) { throw Error("called method without id"); }
         id = '/' + id;
-        return self.update(this.prefix + this.url + id + this.suffix, config);
+        return $http({
+          url: this.prefix + this.url + id + this.suffix,
+          method: this.method.toUpperCase(),
+          data: data,
+          config: config
+        });
       },
       delete: function(id, config) {
         if (!id) { throw Error("called method without id"); }
