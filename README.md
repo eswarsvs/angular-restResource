@@ -1,6 +1,13 @@
 angular-restResource
 ====================
 
+Todo:
+
+* Tests
+* example app
+
+feel free to request features or send a pull-request :)
+
 Angular Resource Module for REST API endpoints
 
 
